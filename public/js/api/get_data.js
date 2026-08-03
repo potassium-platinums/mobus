@@ -109,7 +109,7 @@ if (bookingBtn) {
                                 <p>Fare (Cost): <strong style='text-transform: uppercase;'>${bus.price} UGX</strong></p>
 
                                 <p>Bus Code: <strong style='text-transform: uppercase;'>${bus.Plate_number}</strong> | Session: <strong style='text-transform: uppercase;'>${bus.session}</strong> | Departure: <strong style='text-transform: uppercase;'>${bus.departure_time}</strong></p>
-                                <button class="btn-primary btn-sm" onclick="booking(${bus.Bus_id})">Book This Bus</button>
+                                <button class="btn-primary btn-sm" onclick="booking(${bus.Bus_id})">Book a Seat</button>
                                 <button class="btn-primary btn-sm" >Book The Whole Bus</button>
                             </div>
                 `).join('')
