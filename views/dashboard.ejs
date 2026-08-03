@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoBus Africa - Passenger Interface</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo"><i class="fas fa-bus"></i><span>MoBus Africa</span></div>
+        <div class="nav-buttons">
+            <!-- <button onclick="togglePopup()" class="nav-btn">UGX <span id="balance">0</span> <i class="fas fa-plus-circle"></i></button> -->
+            <button class="icon-button" onclick="switchTab('booking_card')"><i class="fas fa-bell"></i><span id="count" class="badge">0</span>Booking</button>
+            <a style="text-decoration: none;" href="/logout" class="nav-btn"><i class="fas fa-sign-in-alt"></i> Logout</a>
+        </div>
+    </header>
+
+    <div class="container" id="appContainer">
+         <!-- CTA -->
+        <div class="cta-section">
+            <h2><i class="fas fa-rocket"></i> Experience the Future of African Transport</h2>
+            <p>Book rides, track buses, manage logistics, and explore Africa with MoBus Africa's complete platform.</p>
+            <button class="btn-accent" onclick="switchTab('book')"><i class="fas fa-bus"></i> Book Trip Now</button>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tab-container">
+            <div class="tabs" id="tabHeaders">
+                <div class="tab active" onclick="switchTab('daily')"><i class="fas fa-briefcase"></i> Daily Commute</div>
+                <div class="tab" onclick="switchTab('book')"><i class="fas fa-bus"></i> Book Bus Schedule</div>
+                <div class="tab" onclick="switchTab('records')"><i class="fas fa-bars"></i> Booking Records<span id="count2" class="badge2">0</span></div>
+                <div class="tab" onclick="switchTab('profile')"><i class="fas fa-user"></i> User Profile</div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- DAILY TAB -->
+            <div id="daily" class="tab-content active">
+                <h2><i class="fas fa-briefcase"></i> Daily Commute</h2>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label><i class="fas fa-globe-africa"></i> Country</label>
+                        <select id="country">
+                            <option value="uganda">🇺🇬 Uganda</option>
+                            <option value="kenya">🇰🇪 Kenya</option>
+                            <option value="rwanda">🇷🇼 Rwanda</option>
+                            <option value="tanzania">🇹🇿 Tanzania</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-clock"></i> Time</label>
+                        <select id="time">
+                            <option value="morning">🌅 Morning (6AM-9AM)</option>
+                            <option value="evening">🌆 Evening (4:30PM-8PM)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="preview">
+                    <!-- <div class="route-card">
+                        <h3><i class="fas fa-bus"></i> Ntinda → Kampala City Centre</h3>
+                        <div class="route-info">
+                            <span><i class="fas fa-money-bill-wave"></i> UGX 2,500</span>
+                            <span><i class="fas fa-clock"></i> 25-40 mins</span>
+                            <span><i class="fas fa-users"></i> 12 seats left</span>
+                        </div>
+                        <button class="btn-primary btn-sm" onclick="book(2500, 'Ntinda → City Centre')"><i class="fas fa-ticket-alt"></i> Book Seat</button>
+                    </div> -->
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- BOOKING TAB -->
+            <div id="book" class="tab-content">
+                <h2><i class="fas fa-bus"></i> Bus Schedule Booking Module</h2>
+                <div class="grid-2">
+                    <div class="card">
+                        <form id="booking_form" action="#" method="POST">
+                            <h3><i class="fa fa-bars"></i> Book your Bus</h3>
+                            <div class="form-group">
+                                <label>Origin</label>
+                                <select id="origin">
+                                    <option value="">Choose Your Origin</option>
+                                    <!--  -->
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Destination</label>
+                                <select id="destination">
+                                    <option value="">Choose Your Destination</option>
+                                    <!--  -->
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label> Travel Time</label>
+                                <select id="Trip_time">
+                                    <option value="">Choose Travel Time</option>
+                                    <option value="morning">Morning (6AM-9AM)</option>
+                                    <option value="evening">Evening (4:30PM-8PM)</option>
+                                </select>
+                            </div>
+                            <button id="bookingBtn" class="btn-secondary"><i class="fas fa-search"></i> Search Bus Shedule</button>
+                            <!-- <button id="bookingBtn" class="btn-secondary"><i class="fas fa-check"></i> Finish Booking</button> -->
+                        </form>
+                    </div>
+                    <div class="card">
+                        <h3><i class="fas fa-ticket-alt"></i> Active Bus Schedules</h3>
+                        <div id="bus_shedule" style="height: 300px; padding: 10px; overflow-y: auto;">
+                            <!--  -->
+                            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                                <button class="btn-primary btn-sm"><i class="fas fa-bell"></i> Boarding Alerts</button>
+                                <button class="btn-primary btn-sm"><i class="fas fa-map"></i> Live Location</button>
+                                <button class="btn-primary btn-sm"><i class="fas fa-check"></i> Attendance</button>
+                                <button class="btn-secondary btn-sm"><i class="fas fa-file-invoice"></i> Invoicing</button>
+                            </div>
+                            <div style="margin-top:12px;">
+                                <p><i class="fas fa-check-circle" style="color:var(--secondary);"></i> Select Your Current Location / Origin</p>
+                                <p><i class="fas fa-check-circle" style="color:var(--secondary);"></i> Select Your Desired Travel Destination</p>
+                                <p><i class="fas fa-check-circle" style="color:var(--secondary);"></i> Select Your Convinient Travel Session (Time)</p>
+                                <p><i class="fas fa-check-circle" style="color:var(--secondary);"></i> Finish by clicking Searching Bus Schedule</p>
+                                <br>
+                                <p style="font-weight: bold;"> THE AVALIALE BUS SCHEDULES WILL BE DISPLAYED ON THIS PANEL</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <h3><i class="fas fa-headset"></i> African Transport Support</h3>
+                    <p><i class="fas fa-phone"></i> +256 753 682 216</p>
+                    <p><i class="fas fa-envelope"></i> info@mobus.africa</p>
+                </div>
+            </div>
+
+
+
+
+
+
+            <!-- Booking History -->
+            <div id="records" class="booking-history tab-content" >
+                <h2><i class="fas fa-history"></i> Your Booking History</h2>
+                <div id="bookingList_receipt">
+                        <!--  -->
+                </div>
+            </div>
+
+
+            <!-- ====== USER PROFILE TAB ====== -->
+            <div id="profile" class="tab-content">
+                <h2><i class="fas fa-user-circle"></i> User Profile</h2>
+                <div id="display_user" class="card" style="max-width: 500px; margin: 0 auto;">
+                    <input type="hidden" value="<%= user.userId%>" id="userID">
+                    <div class="profile-avatar"><i class="fas fa-user"></i></div>
+                    <div class="profile-field"><span class="label">Full Name</span><span class="value"><%= user.firstName %> <%= user.lastName %></span></div>
+                    <div class="profile-field"><span class="label">Email</span><span class="value"><%= user.email %></span></div>
+                    <div class="profile-field"><span class="label">Phone</span><span class="value"><%= user.phone %></span></div>
+                    <div class="profile-field"><span class="label">Member Since</span><span class="value">Jan 2024</span></div>
+                    <div class="profile-field"><span class="label">Total Bookings</span><span class="value" id="profileBookings">0</span></div>
+                    <div class="profile-field"><span class="label">Wallet Balance</span><span class="value" id="profileBalance">UGX 0</span></div>
+                    <div style="display:flex; gap:10px; margin-top: 16px; flex-wrap: wrap; justify-content: center;">
+                        <button class="btn-primary btn-sm"><i class="fas fa-edit"></i> Edit Profile</button>
+                        <button class="btn-secondary btn-sm"><i class="fas fa-key"></i> Change Password</button>
+                        <button class="btn-outline btn-sm"><i class="fas fa-download"></i> Export Data</button>
+                    </div>
+                </div>
+                <div style="margin-top:20px; text-align: center;">
+                    <p style="color: var(--gray); font-size: 0.9rem;">This system was Designed By Mr. OJ OMOLLO</p>
+                </div>
+            </div>
+
+
+
+
+
+
+            <!-- Booking cart -->
+            <div id="booking_card" class="booking-history tab-content">
+                <h2><i class="fas fa-bell"></i> Pending Bookings Receipts</h2>
+                <div id="booking_list">
+                            <!--  -->
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+
+    <!-- pop up seats form -->
+                <div id="popupOverlay_book_seat" 
+                    class="overlay-container">
+                    <div class="popup-box">
+                        <h2 style="color: #008000;">Avaliable Seats</h2>
+                        <!-- select seat -->
+                            <form id="seatsFrom" class="form-container" method="POST" action="#">
+                                <input type="hidden" id="bus_id">
+                                <div class="form-group">
+                                    <select id="seats">
+                                        <option value="">Choose Choose Seat</option>
+                                            <!-- data from node -->
+                                    </select>
+                                </div>
+                                <button id="seatsBtn" class="btn-secondary"><i class="fas fa-ticket"></i>Book Seat</button>
+                            </form>
+                         <button class="btn-close-popup" onclick="closepopup('popupOverlay_book_seat')"><i class="fa fa-window-close"></i> Cancel</button>
+                    </div>
+                </div>
+
+    <!-- =============== RECEIPT =================== -->
+    <div id="popupOverlay_receipt" class="overlay-container">
+        <div class="popup-box" style="width: 400px; padding: 10px;">
+
+            <div id="receiptView">
+                <!-- reciept -->
+            </div>
+
+            <button class="btn-close-popup" onclick="window.print()"><i class="fas fa-print"></i> Print</button>
+            <button class="btn-close-popup" onclick="closepopup('popupOverlay_receipt')"><i class="fa fa-window-close"></i> Close</button>
+            <button class="btn-close-popup" onclick="downloadPDF()"><i class="fas fa-download"></i> Save</button>
+        </div>
+    </div>
+
+    <!-- ===== FIXED BOTTOM NAV (MOBILE) ===== -->
+    <nav class="bottom-nav" id="bottomNav">
+        <div class="tab active" title="Daily Commute" onclick="switchTab('daily')"><i class="fas fa-briefcase"></i></div>
+        <div class="tab" title="Book Bus" onclick="switchTab('book')"><i class="fas fa-bus"></i> </div>
+        <div class="tab" title="Booking History" onclick="switchTab('records')"><i class="fas fa-bars"></i></div>
+        <div class="tab" onclick="toggleChatbot()"><i class="fas fa-robot"></i></div>
+        <div class="tab" onclick="switchTab('profile')"><i class="fas fa-user"></i></div>
+    </nav>
+
+    <!-- Chatbot -->
+    <button class="chatbot-toggle" onclick="toggleChatbot()"><i class="fas fa-robot"></i></button>
+    <div class="chatbot-window" id="chatbotWindow">
+        <div class="chatbot-header">
+            <span><i class="fas fa-robot"></i> AI Assistant</span>
+            <button onclick="toggleChatbot()">✕</button>
+        </div>
+        <div class="chatbot-messages" id="chatMessages">
+            <div class="chatbot-message bot">👋 Hello! I'm your MoBus AI assistant. How can I help you today?<br><small>You can ask about bookings, routes, or anything else!</small></div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="if(event.key==='Enter') sendChatMessage()">
+            <button onclick="sendChatMessage()"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText"></span>
+    </div>
+
+    <!-- pop up form Payment Method -->
+    <div id="popupOverlay" 
+         class="overlay-container">
+        <div class="popup-box">
+            <h2 style="color: green;">Make a Ticket Payment</h2>
+            <form method="POST" action="#" id="paymentForm" class="form-container">
+                <div class="form-group">
+                    <select id="payment_method">
+                        <option value="">Choose Payment Method</option>
+                        <option value="mtn">&#128181;  MTN Money</option>
+                        <option value="airtel">&#128181;  Airtel Money</option>
+                        <!-- <option value="bank">&#128179; Card Payment</option> -->
+                    </select>
+                </div>
+                <input type="hidden" id="booking_id">
+                <div class="form-group">
+                    <input type="text" id="mobile_number" placeholder="Enter Phone Number" />
+                </div>
+                <div class="form-group">
+                    <input type="number" id="amount" maxlength="1000000" placeholder="Enter Amount" />
+                </div>
+                <button id="paymentBtn" class="btn-secondary"><i class="fas fa-check"></i>Finish Payment</button>
+            </form>
+
+            <button class="btn-close-popup" onclick="closepopup('popupOverlay')"><i class="fa fa-window-close"></i> Cancel</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div><h3>MoBus Africa</h3><p><i class="fas fa-phone"></i> +256 753 682 216</p><p><i class="fas fa-envelope"></i> info@mobus.africa</p></div>
+            <div><h3>Services</h3><p><a href="#" onclick="switchTab('daily');return false;">Daily Commute</a></p><p><a href="#" onclick="switchTab('school');return false;">School</a></p><p><a href="#" onclick="switchTab('tourism');return false;">Tourism</a></p><p><a href="#" onclick="switchTab('logistics');return false;">Logistics</a></p></div>
+            <div><h3>Partners</h3><p>MTN Uganda</p><p>Airtel Uganda</p><p>Uganda Tourism Board</p><p>UWA</p></div>
+            <div><h3>Follow Us</h3><div class="social-icons"><a href="#"><i class="fab fa-facebook"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div></div>
+        </div>
+        <div class="copyright"><p>MoBus Africa &copy; 2024 - All Rights Reserved | Made with ❤️ in Uganda</p></div>
+    </footer>
+
+    <script src="js/dashboard.js"></script>
+    <script src="js/api/get_data.js"></script>
+</body>
+</html>

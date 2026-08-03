@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoBus Africa - Adminstration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="logo"><i class="fas fa-bus"></i><span>MoBus Africa</span></div>
+        <div class="nav-buttons">
+            <button class="icon-button"><i class="fas fa-bell"></i><span id="count" class="badge">0</span></button>
+            <a style="text-decoration: none;" href="/log_admin" class="nav-btn"><i class="fas fa-sign-in-alt"></i> Logout</a>
+        </div>
+    </header>
+
+    <div class="container" id="appContainer">
+        <!--  -->
+
+        <!-- Tabs -->
+        <div class="tab-container">
+            <div class="tabs" id="tabHeaders">
+                <div class="tab active" onclick="switchTab('daily')"><i class="fas fa-briefcase"></i> Dashboard</div>
+                <div class="tab" onclick="switchTab('buses')"><i class="fas fa-bus"></i> Buses & Seats</div>
+                <div class="tab" onclick="switchTab('trips')"><i class="fas fa-globe-africa"></i> Trips & Routes</div>
+                <div class="tab" onclick="switchTab('wallet')"><i class="fas fa-dollar-sign"></i> Revenue / Income</div>
+            </div>
+
+            <!-- DAILY TAB -->
+            <div id="daily" class="tab-content active">
+                <h2><i class="fas fa-briefcase"></i> Daily Commute</h2>
+                
+                <!-- Stats -->
+                <div class="stats-grid" id="statsGrid">
+                    <div class="stat-card"><i class="fas fa-ticket-alt"></i><div class="number" id="totalBookings">0</div><div class="label">Total Bookings</div></div>
+                    <div class="stat-card"><i class="fas fa-users"></i><div class="number" id="activePassengers">0</div><div class="label">Active Passengers</div></div>
+                    <div class="stat-card"><i class="fas fa-bus"></i><div class="number" id="activeBuses">0</div><div class="label">Active Buses</div></div>
+                    <div class="stat-card"><i class="fas fa-map-marked-alt"></i><div class="number" id="liveRoutes">0</div><div class="label">Live Routes</div></div>
+                    
+                </div>
+
+                <!-- <div class="stats-grid" id="statsGrid">
+                    <div class="stat-card"><i class="fas fa-ticket-alt"></i><div class="number" id="totalBookings">0</div><div class="label">Total Bookings</div></div>
+                    <div class="stat-card"><i class="fas fa-users"></i><div class="number" id="activePassengers">0</div><div class="label">Active Passengers</div></div>
+                    <div class="stat-card"><i class="fas fa-bus"></i><div class="number" id="activeBuses">0</div><div class="label">Active Buses</div></div>
+                    <div class="stat-card"><i class="fas fa-map-marked-alt"></i><div class="number" id="liveRoutes">0</div><div class="label">Live Routes</div></div>
+                    <div class="stat-card"><i class="fas fa-dollar-sign"></i><div class="number" id="revenueToday">0</div><div class="label">Revenue Today</div></div>
+                    <div class="stat-card"><i class="fas fa-ticket-alt"></i><div class="number" id="activePromotions">0</div><div class="label">Active Promotions</div></div>
+                    
+                </div> -->
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- BUSES & SEATS TAB -->
+            <div id="buses" class="tab-content">
+                <h2><i class="fas fa-box"></i> Buses & Seats</h2>
+                <div class="grid-2">
+                    <div class="card">
+                        <form id="busForm" action="#" method="POST">
+                            <h3><i class="fas fa-package"></i> Bus Details (1)</h3>
+                            <div class="form-group">
+                                <label>Bus Plate Number</label>
+                                <input type="text" id="plateNumber" placeholder="Bus Plate Number">
+                            </div>
+                            <div class="form-group">
+                                <label>Bus Capacity</label>
+                                <input type="number" id="Capacity" placeholder="Bus Capacity">
+                            </div>
+                            <div class="form-group">
+                                <label>Bus Type</label>
+                                <select  id="bus_type">
+                                    <option value="">Choose Bus Type</option>
+                                    <option value="City Transit Bus">City Transit Bus</option>
+                                    <option value="Minibus">Minibus</option>
+                                    <option value="Shuttle Bus">Shuttle Bus</option>
+                                    <option value="Coach Bus">Coach Bus</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Bus Driver</label>
+                                <select id="bus_driver">
+                                    <option value="">Choose Bus Driver</option>
+                                    <option value="Mr. John Doe">Mr. John Doe</option>
+                                    <option value="Mr. Tom Brad">Mr. Tom Brad</option>
+                                    <option value="Mr. Omollo">Mr. Omollo</option>
+                                    <option value="Mr. Patrick">Mr. Patrick</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Bus Name</label>
+                                <select id="bus_name">
+                                    <option value="">Choose Bus Name</option>
+                                    <option value="Bus A">Bus A</option>
+                                    <option value="Bus B">Bus B</option>
+                                    <option value="Bus C">Bus C</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Travel Session (Time)</label>
+                                <select id="bus_session">
+                                    <option value="">Choose Bus Travel Session</option>
+                                    <option value="morning">Morining (4:00 - 9:00) AM</option>
+                                    <option value="evening">Evening (4:00 - 8:00) PM</option>
+                                </select>
+                            </div>
+                            <button type="submit" id="addBus" class="btn-primary"><i class="fas fa-plus-circle"></i> Register Bus</button>
+                        </form>
+                    </div>
+                    <div class="card">
+                        <form id="addSeat" action="#" method="POST">
+                            <h3><i class="fas fa-package"></i> Seats Details (2)</h3>
+                            <div class="form-group">
+                                <label>Bus Plate Number</label>
+                                <input type="text" id="Bus_plate" placeholder="Bus Plate Number">
+                            </div>
+                            <div class="form-group">
+                                <label>Bus Seats Number</label>
+                                <select  id="seats_number">
+                                    <option value="">Choose Seat Number</option>
+                                    <option value="1">Seat 1</option>
+                                    <option value="2">Seat 2</option>
+                                    <option value="3">Seat 3</option>
+                                    <option value="4">Seat 4</option>
+                                    <option value="5">Seat 5</option>
+                                    <option value="6">Seat 6</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Seat Class (Type)</label>
+                                <select  id="category">
+                                    <option value="">Choose Seat Type</option>
+                                    <option value="First Class">First Class (VIP)</option>
+                                    <option value="Middle Class">Middle Class</option>
+                                    <option value="Economy">Economy Class</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Seat Price (Cost)</label>
+                                <select  id="seat_price">
+                                    <option value="">Choose Seat Price</option>
+                                    <option value="5000">UGX 5000 (First Class)</option>
+                                    <option value="2500">UGX 2500 (Middle class)</option>
+                                    <option value="1000">UGX 1000 (Economy Class)</option>
+                                </select>
+                            </div>
+                            <button id="seatBtn" class="btn-primary" style="float: right;"><i class="fas fa-plus-circle"></i> Register Seat</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <h3><i class="fas fa-truck"></i> Buses & Routes Support</h3>
+                    <p><i class="fas fa-phone"></i> +256 753 682 216</p>
+                    <p><i class="fas fa-envelope"></i> buses&routesgistics@mobus.africa</p>
+                </div>
+            </div>
+
+            <!-- TRIPS & ROUTES TAB -->
+            <div id="trips" class="tab-content">
+                <h2><i class="fas fa-box"></i> Trips & Routes</h2>
+                <div class="grid-2">
+                    <div class="card">
+                        <form id="addTrip" action="#" method="POST">
+                            <h3><i class="fas fa-package"></i> Trip Details (3)</h3>
+                            <div class="form-group">
+                                <label>Departure Time</label>
+                                <input id="departure" type="time" placeholder="Bus Plate Number">
+                            </div>
+                            <div class="form-group">
+                                <label>Cost</label>
+                                <input id="cost" type="text" placeholder="Trip Cost (Ugx)">
+                            </div>
+                            <div class="form-group">
+                                <label>Trip Driver</label>
+                                <select id="driver">
+                                    <option value="">Choose Trip Driver</option>
+                                    <option value="Mr. John Doe">Mr. John Doe</option>
+                                    <option value="Mr. Tom Brad">Mr. Tom Brad</option>
+                                    <option value="Mr. Omollo">Mr. Omollo</option>
+                                    <option value="Mr. Patrick">Mr. Patrick</option>
+                                </select>
+                            </div>
+                            <button id="tripBtn" class="btn-primary"><i class="fas fa-plus-circle"></i> Add Trip</button>
+                        </form>
+                    </div>
+                    <div class="card">
+                        <form id="addRoute" action="#" method="POST">
+                            <h3><i class="fas fa-package"></i> Route Details (4)</h3>
+                            <div class="form-group">
+                                <input id="Route_id" type="hidden" />
+                                <input id="driver" type="hidden" />
+                                <label>Route Origin</label>
+                                <select id="origin">
+                                    <option value="">Choose Route Origin</option>
+                                    <option value="Ntinda">Ntinda</option>
+                                    <option value="Entebbe Rd">Entebbe Rd</option>
+                                    <option value="Kireka">Kireka </option>
+                                    <option value="Kampala City">Kampala City </option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Route Destination</label>
+                                <select id="destination">
+                                    <option value="">Choose Route Destination</option>
+                                    <option value="City Center">City Center</option>
+                                    <option value="Ntinda Center">Ntinda Center</option>
+                                    <option value="Industrial Area">Industrial Area</option>
+                                    <option value="kisumu City">Kusumu City</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Route Estimated Distance (KM)</label>
+                                <input id="distance" type="text" placeholder="Route Distance">
+                            </div>
+                            <button id="routeBtn" class="btn-primary" style="float: right;"><i class="fas fa-plus-circle"></i> Add Route</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <h3><i class="fas fa-truck"></i> Buses & Routes Support</h3>
+                    <p><i class="fas fa-phone"></i> +256 753 682 216</p>
+                    <p><i class="fas fa-envelope"></i> buses&routesgistics@mobus.africa</p>
+                </div>
+            </div>
+
+            <!-- REVENUE TAB -->
+            <div id="wallet" class="tab-content">
+                <h2><i class="fas fa-dollar-sign"></i> Income & Earnings</h2>
+                <div class="wallet">
+                    <h2>
+                        <i class="fas fa-wallet"></i> Wallet Balance
+                        <!-- <i id="showincome" class="fas fa-eye"></i> -->
+                    </h2>
+                    <div class="balance">UGX <span id="balance">0</span></div>
+                    <div class="wallet-buttons">
+                        <button class="btn-primary btn-sm" ><i class="fas fa-coins"></i> Withdraw</button>
+                        <button class="btn-primary btn-sm" ><i class="fas fa-exchange"></i> Transfer</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h2><i class="fas fa-rocket"></i> Experience the Future of African Transport</h2>
+            <p>Book rides, track buses, manage logistics, and explore Africa with MoBus Africa's complete platform.</p>
+            <button class="btn-accent" onclick="switchTab('daily')"><i class="fas fa-bus"></i> Book Now</button>
+        </div>
+
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText"></span>
+    </div>
+
+    <!-- ===== FIXED BOTTOM NAV (MOBILE) ===== -->
+    <nav class="bottom-nav" id="bottomNav">
+        <div class="tab active" title="Daily Commute" onclick="switchTab('daily')"><i class="fas fa-briefcase"></i></div>
+        <div class="tab" title="Buses & Seats" onclick="switchTab('buses')"><i class="fas fa-bus"></i> </div>
+        <div class="tab" title="Trips & Routes" onclick="switchTab('trips')"><i class="fas fa-bars"></i></div>
+        <div class="tab" title="Revenue/Income" onclick="switchTab('wallet')"><i class="fas fa-dollar-sign"></i></div>
+    </nav>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div><h3>MoBus Africa</h3><p><i class="fas fa-phone"></i> +256 753 682 216</p><p><i class="fas fa-envelope"></i> info@mobus.africa</p></div>
+            <div><h3>Services</h3><p><a href="#" onclick="switchTab('daily');return false;">Daily Commute</a></p><p><a href="#" onclick="switchTab('school');return false;">School</a></p><p><a href="#" onclick="switchTab('tourism');return false;">Tourism</a></p><p><a href="#" onclick="switchTab('logistics');return false;">Logistics</a></p></div>
+            <div><h3>Partners</h3><p>MTN Uganda</p><p>Airtel Uganda</p><p>Uganda Tourism Board</p><p>UWA</p></div>
+            <div><h3>Follow Us</h3><div class="social-icons"><a href="#"><i class="fab fa-facebook"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div></div>
+        </div>
+        <div class="copyright"><p>MoBus Africa &copy; 2024 - All Rights Reserved | Made with ❤️ in Uganda</p></div>
+    </footer>
+
+    <script src="js/admin/adminHome.js"></script>
+    <script src="js/api/insert_data.js"></script>
+</body>
+</html>

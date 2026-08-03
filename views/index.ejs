@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+  <title>MoBus Africa · Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+<!-- header – compact -->
+<header>
+  <div class="logo"><i class="fas fa-bus"></i><span>MoBus</span></div>
+  <div class="nav-buttons">
+    <a href="/login" style="text-decoration: none;" class="nav-btn"><i class="fas fa-user"></i> Log In </a> | <a href="/register" style="text-decoration: none;" class="nav-btn"><i class="fas fa-user"></i> Sign Up</a>
+  </div>
+</header>
+
+<!-- hero -->
+<section class="hero">
+  <h1>Your <span>complete</span> transport hub</h1>
+  <p>Daily rides, school shuttles, safari, cross-border &amp; logistics — all in one.</p>
+  <div class="hero-buttons">
+    <a href="/register" class="btn btn-outline"><i class="fas fa-ticket-alt"></i> Book now</a>
+    <a href="#" class="btn btn-outline"><i class="fas fa-headset"></i> Help</a>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- stats – mobile friendly 2 columns -->
+  <!-- <div class="stats-grid">
+    <div class="stat-card"><i class="fas fa-ticket-alt"></i><div class="number">1.2k</div><div class="label">Bookings</div></div>
+    <div class="stat-card"><i class="fas fa-users"></i><div class="number">342</div><div class="label">Passengers</div></div>
+    <div class="stat-card"><i class="fas fa-bus"></i><div class="number">27</div><div class="label">Buses</div></div>
+    <div class="stat-card"><i class="fas fa-map-marked-alt"></i><div class="number">16</div><div class="label">Routes</div></div>
+    <div class="stat-card"><i class="fas fa-dollar-sign"></i><div class="number">2.4M</div><div class="label">Revenue</div></div>
+    <div class="stat-card"><i class="fas fa-ticket-alt"></i><div class="number">5</div><div class="label">Promos</div></div>
+  </div> -->
+
+  <!-- popular routes – stacked on mobile -->
+  <h2 class="section-title"><i class="fas fa-route"></i> Popular routes</h2>
+  <div class="route-preview" id="preview">
+    <!-- <div class="route-card">
+      <h4><i class="fas fa-bus"></i> Ntinda → City</h4>
+      <div class="route-info"><span><i class="fas fa-money-bill-wave"></i> UGX 2,500</span><span><i class="fas fa-clock"></i> 25-40m</span><span><i class="fas fa-users"></i> 12 seats</span></div>
+      <button class="btn btn-primary btn-sm" onclick="showNotification('✅ Seat booked: Ntinda → City')">Book seat</button>
+    </div> -->
+  </div>
+
+  <!-- modules – 1 col on mobile -->
+  <h2 class="section-title"><i class="fas fa-th-large"></i> Explore modules</h2>
+  <div class="grid-3">
+    <div class="feature-card"><i class="fas fa-briefcase"></i><h3>Daily Commute</h3><p>Ntinda · Entebbe · Kireka</p><button class="btn btn-primary btn-sm" onclick="showNotification('🚌 Daily routes')">View</button></div>
+    <div class="feature-card"><i class="fas fa-school"></i><h3>School</h3><p>Shuttles · alerts · attendance</p><button class="btn btn-secondary btn-sm" onclick="showNotification('🏫 School module')">Book</button></div>
+    <div class="feature-card"><i class="fas fa-umbrella-beach"></i><h3>Tourism</h3><p>Safari · hotels · gorillas</p><button class="btn btn-primary btn-sm" onclick="showNotification('🦍 Safari')">Explore</button></div>
+    <div class="feature-card"><i class="fas fa-box"></i><h3>Logistics</h3><p>Parcels · tracking · cargo</p><button class="btn btn-secondary btn-sm" onclick="showNotification('📦 Logistics')">Track</button></div>
+    <div class="feature-card"><i class="fas fa-building"></i><h3>Corporate</h3><p>Shuttles · invoicing · HR</p><button class="btn btn-primary btn-sm" onclick="showNotification('🏢 Corporate')">Book</button></div>
+    <div class="feature-card"><i class="fas fa-globe-africa"></i><h3>Cross-border</h3><p>Nairobi · Kigali · visas</p><button class="btn btn-secondary btn-sm" onclick="showNotification('🌍 Cross-border')">Book</button></div>
+  </div>
+
+  <!-- cta -->
+  <div class="cta-section">
+    <h2><i class="fas fa-rocket"></i> Africa's mobility</h2>
+    <p>Seamless transport across the continent — from commutes to cross-border.</p>
+    <button class="btn" style="background: var(--accent); color: #0f172a; font-weight: 700;" onclick="showNotification('🚀 Dashboard')"><i class="fas fa-bus"></i> Contact Us</button>
+  </div>
+
+</div>
+
+<!-- footer -->
+<footer>
+  <div class="footer-grid">
+    <div><h3>MoBus</h3><p><i class="fas fa-phone"></i> +256 753 682 216</p><p><i class="fas fa-envelope"></i> info@mobus.africa</p></div>
+    <div><h3>Services</h3><p><a href="#" onclick="showNotification('Daily'); return false;">Daily</a></p><p><a href="#" onclick="showNotification('School'); return false;">School</a></p><p><a href="#" onclick="showNotification('Tourism'); return false;">Tourism</a></p></div>
+    <div><h3>Partners</h3><p>MTN Uganda</p><p>Airtel</p><p>Tourism Board</p></div>
+    <div><h3>Follow</h3><div class="social-icons"><a href="#"><i class="fab fa-facebook"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-linkedin"></i></a></div></div>
+  </div>
+  <div class="copyright"><p>MoBus Africa &copy; 2024 · Made with ❤️ in Uganda</p></div>
+</footer>
+
+<!-- notification -->
+<div class="notification" id="notification">
+  <i class="fas fa-check-circle"></i>
+  <span id="notificationText">Welcome back!</span>
+</div>
+
+<!-- <script src="js/index.js"></script> -->
+ <script src="js/api/get_data.js"></script>
+</body>
+</html>

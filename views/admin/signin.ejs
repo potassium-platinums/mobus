@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+  <title>MoBus Africa · Login In</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/registration.css" />
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+<!-- header -->
+<header>
+  <div class="logo"><i class="fas fa-bus"></i><span>MoBus</span></div>
+  <!-- <div class="nav-buttons">
+    <a href="/" class="nav-btn primary"><i class="fas fa-home"></i> Home</a>
+    <a href="/help" class="nav-btn secondary"><i class="fas fa-headset"></i> Help</a>
+    <a href="/ai" class="nav-btn accent"><i class="fas fa-robot"></i> AI</a>
+  </div> -->
+</header>
+
+<div class="container">
+  <div class="auth-card">
+    <!-- Tabs -->
+    <div class="auth-tabs">
+      <button class="auth-tab" data-tab="login">
+        <i class="fas fa-sign-in-alt"></i> Administration
+      </button>
+    </div>
+
+    <!-- ADMIN LOGIN FORM -->
+    <div id="loginForm" class="auth-form active">
+      <form id="adminloginFormElement" action="#" method="POST">
+        <div class="form-group">
+          <label><i class="fas fa-envelope"></i> Email</label>
+          <input type="text" id="loginEmailAdmin" placeholder="Enter email" />
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-lock"></i> Password</label>
+          <input type="password" id="loginPasswordAdmin" placeholder="Enter password" />
+          <i id="showpass" class="fas fa-eye"></i> <i id="hidepass" class="fa fa-eye-slash"></i>
+        </div>
+        <button id="adminsigninBtn" type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Login</button>
+        <div class="auth-footer">
+          Forgot Password? <a href="#">Reset Password</a>
+        </div>
+        
+      </form>
+    </div>
+  </div>
+
+</div>
+
+<!-- footer -->
+<footer>
+  <div class="footer-inner">
+    <p>MoBus Africa &copy; 2024 · Secure · Fast · Reliable</p>
+    <p style="margin-top: 4px;"><a href="#" onclick="showNotification('🔒 Privacy'); return false;">Privacy</a> · <a href="#" onclick="showNotification('📜 Terms'); return false;">Terms</a> · <a href="#" onclick="showNotification('📧 support@mobus.africa'); return false;">Support</a></p>
+  </div>
+</footer>
+
+<!-- notification -->
+<div class="notification" id="notification">
+  <i class="fas fa-check-circle"></i>
+  <span id="notificationText">Welcome back!</span>
+</div>
+
+<script src="js/admin/signin.js"></script>
+</body>
+</html>

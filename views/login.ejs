@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+  <title>MoBus Africa · Login In</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/registration.css" />
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+<!-- header -->
+<header>
+  <div class="logo"><i class="fas fa-bus"></i><span>MoBus</span></div>
+  <div class="nav-buttons">
+    <a href="/" class="nav-btn primary"><i class="fas fa-home"></i> Home</a>
+    <a href="/help" class="nav-btn secondary"><i class="fas fa-headset"></i> Help</a>
+    <a href="/ai" class="nav-btn accent"><i class="fas fa-robot"></i> AI</a>
+  </div>
+</header>
+
+<div class="container">
+  <div class="auth-card">
+    <!-- Tabs -->
+    <div class="auth-tabs">
+      <button class="auth-tab" data-tab="login">
+        <i class="fas fa-sign-in-alt"></i> Login
+      </button>
+    </div>
+
+    <!-- LOGIN FORM -->
+    <div id="loginForm" class="auth-form active">
+      <form id="loginFormElement" action="#" method="POST">
+        <div class="form-group">
+          <label><i class="fas fa-envelope"></i> Email or Phone</label>
+          <input type="text" id="loginEmail" placeholder="Enter email or phone" />
+        </div>
+        <div class="form-group">
+          <label><i class="fas fa-lock"></i> Password</label>
+          <input type="password" id="loginPassword" placeholder="Enter password" />
+          <i id="showpass" class="fas fa-eye"></i> <i id="hidepass" class="fa fa-eye-slash"></i>
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="rememberMe" />
+          <label for="rememberMe">Remember me</label>
+        </div>
+        <button id="loginBtn" type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Login</button>
+        <div class="auth-footer">
+          You don't have an account? <a href="/register">Sign Up</a>
+        </div>
+        <div class="auth-footer">
+          <a href="#" >Forgot password?</a>
+        </div>
+        <div class="divider">or continue with</div>
+        <div class="social-login">
+          <button type="button" class="social-btn google" onclick="showNotification('🔵 Google login demo')"><i class="fab fa-google"></i> Google</button>
+          <button type="button" class="social-btn facebook" onclick="showNotification('🔵 Facebook login demo')"><i class="fab fa-facebook"></i> Facebook</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- back to home link -->
+  <div style="text-align: center; margin-top: 8px;">
+    <a href="/" onclick="showNotification('🏠 Returning to homepage');" style="color: var(--primary); font-weight: 600; text-decoration: none; font-size: 0.9rem;">
+      <i class="fas fa-arrow-left"></i> Back to Home
+    </a>
+  </div>
+</div>
+
+<!-- footer -->
+<footer>
+  <div class="footer-inner">
+    <p>MoBus Africa &copy; 2024 · Secure · Fast · Reliable</p>
+    <p style="margin-top: 4px;"><a href="#" onclick="showNotification('🔒 Privacy'); return false;">Privacy</a> · <a href="#" onclick="showNotification('📜 Terms'); return false;">Terms</a> · <a href="#" onclick="showNotification('📧 support@mobus.africa'); return false;">Support</a></p>
+  </div>
+</footer>
+
+<!-- notification -->
+<div class="notification" id="notification">
+  <i class="fas fa-check-circle"></i>
+  <span id="notificationText">Welcome back!</span>
+</div>
+
+<script src="js/login.js"></script>
+</body>
+</html>
