@@ -76,12 +76,12 @@ function isauthenticated(req, res, next) {
   res.redirect("/") 
 }
 
-function isAdmin(req, res, next) {
-  if (req.admin) {
-    return next()
-  }
-  res.redirect("/admin")
-}
+// function isAdmin(req, res, next) {
+//   if (req.admin) {
+//     return next()
+//   }
+//   res.redirect("/admin")
+// }
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
